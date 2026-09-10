@@ -66,6 +66,10 @@
         }
         .store-logo-img:hover { transform: scale(1.05); }
 
+        /* VFX: TEXT GLOW ON TOUCH/HOVER */
+        .glow-text { transition: text-shadow 0.3s ease, color 0.3s ease; cursor: default; }
+        .glow-text:hover, .glow-text:active { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px #fff; color: #fff; }
+
         .store-name { 
             font-size: 2.2rem; 
             font-weight: 700; 
@@ -100,7 +104,7 @@
         .btn-ig { background-color: #E1306C; }
         .btn-map { background-color: #EA4335; }
 
-        .action-btn:hover { filter: brightness(1.15); transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
+        .action-btn:hover { filter: brightness(1.15); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
 
         .action-btn i { font-size: 1.6rem; margin-bottom: 8px; }
         .action-btn span { font-weight: 600; font-size: 0.95rem; text-transform: uppercase; }
@@ -130,7 +134,7 @@
             text-decoration: none; font-size: 1rem; font-weight: 600; border-radius: 6px;
             transition: 0.2s; cursor: pointer; border: none;
         }
-        .modal-btn:hover { background: var(--primary); }
+        .modal-btn:hover { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
         .close-modal { color: #888; cursor: pointer; font-size: 0.9rem; margin-top: 15px; display: inline-block; }
         .close-modal:hover { color: #fff; text-decoration: underline; }
 
@@ -141,9 +145,9 @@
         .review-btn { 
             background: var(--primary); color: #fff; font-size: 1rem; font-weight: 600; font-family: 'Poppins', sans-serif;
             padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; 
-            text-transform: uppercase; transition: 0.3s; width: 100%; margin-top: 15px;
+            text-transform: uppercase; transition: all 0.3s ease; width: 100%; margin-top: 15px;
         }
-        .review-btn:hover { background: #0056b3; }
+        .review-btn:hover { background: #0056b3; box-shadow: 0 0 15px var(--primary); }
         .review-note { font-size: 0.85rem; color: #aaa; margin-top: 12px; }
 
         /* FOOTER / DEVELOPER INFO */
@@ -178,10 +182,10 @@
         
         <!-- HEADER WITH STORE LOGO -->
         <header class="header-section">
-            <img src="bhanu.mob.png" alt="Bhanu Mobiles Logo" class="store-logo-img click-sfx">
-            <h1 class="store-name">Bhanu Mobiles</h1>
-            <div class="store-sub">Khammam's Premier Mobile Store</div>
-            <div class="tagline"><i class="fa-solid fa-mobile-screen"></i> All Mobiles & Accessories</div>
+            <img src="bhanu.mob.jpeg" alt="Bhanu Mobiles Logo" class="store-logo-img click-sfx">
+            <h1 class="store-name glow-text">Bhanu Mobiles</h1>
+            <div class="store-sub glow-text">Khammam's Premier Mobile Store</div>
+            <div class="tagline glow-text"><i class="fa-solid fa-mobile-screen"></i> All Mobiles & Accessories</div>
         </header>
 
         <!-- ACTION BUTTONS -->
@@ -213,12 +217,12 @@
 
         <!-- AUTO-GENERATED REVIEW SECTION -->
         <div class="review-section fade-in-scroll">
-            <h3 class="review-title">Rate Our Service <i class="fa-solid fa-star" style="color: #ffc107;"></i></h3>
-            <p style="font-size: 0.9rem; color: #ccc;">Tap below to generate and copy a 5-Star Review.</p>
-            <button class="review-btn click-sfx" onclick="generateAndRedirect()">
-                <i class="fa-brands fa-google"></i> Generate Review
+            <h3 class="review-title glow-text">Rate Our Service <i class="fa-solid fa-star" style="color: #ffc107; text-shadow: 0 0 5px gold;"></i></h3>
+            <p style="font-size: 0.9rem; color: #ccc;" class="glow-text">Tap below to auto-generate & copy a 5-Star Review.</p>
+            <button class="review-btn click-sfx" onclick="generateAndRedirect()" id="reviewBtnMain">
+                <i class="fa-brands fa-google"></i> Post a 5-Star Review
             </button>
-            <div class="review-note">Clicking automatically opens Google Maps. Just Paste!</div>
+            <div class="review-note glow-text">Automatically copies text & opens Google Maps. Just Paste!</div>
         </div>
 
         <!-- FOOTER / DEVELOPER LOGO -->
@@ -226,7 +230,7 @@
             <a href="https://catb12345612-ai.github.io/Syed-Zeeshaan-Ali-High-Fledged-Engineering-And-Digital-Tech-Solutions-REVIEW/" target="_blank" class="dev-badge click-sfx">
                 <img src="dev-logo.png(1).png" alt="Developer Logo" class="dev-logo-img">
                 <span class="dev-text">Developed By</span>
-                <span class="dev-name">SYED ZEESHAAN ALI</span>
+                <span class="dev-name glow-text">SYED ZEESHAAN ALI</span>
             </a>
         </footer>
 
@@ -235,7 +239,7 @@
     <!-- MODAL FOR DUAL NUMBERS -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal-content">
-            <h3 class="modal-title" id="modalTitle">Select an Option</h3>
+            <h3 class="modal-title glow-text" id="modalTitle">Select an Option</h3>
             <div id="modalButtons">
                 <!-- Buttons injected via JS -->
             </div>
@@ -247,11 +251,11 @@
     <script>
         // 1. DYNAMIC BACKGROUND IMAGE CHANGER (5 PER MINUTE = EVERY 12 SECONDS)
         const bgImages = [
-            'https://images.unsplash.com/photo-1601784551446-20c9e07cd561?q=80&w=1470&auto=format&fit=crop', // Gadgets/Mobiles
-            'https://images.unsplash.com/photo-1556656793-08538906a9f8?q=80&w=1470&auto=format&fit=crop', // iPhone Box/Store
-            'https://images.unsplash.com/photo-1585060544812-6b45742d762f?q=80&w=1481&auto=format&fit=crop', // Mobile display
-            'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=1470&auto=format&fit=crop', // Samsung/Android tech
-            'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1470&auto=format&fit=crop'  // Tech vibe
+            'https://images.unsplash.com/photo-1601784551446-20c9e07cd561?q=80&w=1470&auto=format&fit=crop', 
+            'https://images.unsplash.com/photo-1556656793-08538906a9f8?q=80&w=1470&auto=format&fit=crop', 
+            'https://images.unsplash.com/photo-1585060544812-6b45742d762f?q=80&w=1481&auto=format&fit=crop', 
+            'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=1470&auto=format&fit=crop', 
+            'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1470&auto=format&fit=crop'
         ];
         
         let bgIndex = 0;
@@ -262,8 +266,8 @@
             bgIndex = (bgIndex + 1) % bgImages.length;
         }
         
-        changeBackground(); // Init
-        setInterval(changeBackground, 12000); // 12,000ms = 12s (5 times per 60s)
+        changeBackground(); 
+        setInterval(changeBackground, 12000); 
 
         // 2. SCROLL ANIMATION
         const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -20px 0px" };
@@ -295,7 +299,7 @@
         const modalButtons = document.getElementById('modalButtons');
 
         function openModal(type) {
-            modalButtons.innerHTML = ''; // clear previous
+            modalButtons.innerHTML = ''; 
             
             if(type === 'call') {
                 modalTitle.innerHTML = '<i class="fa-solid fa-phone"></i> Call Numbers';
@@ -311,7 +315,6 @@
                 `;
             }
             
-            // Re-bind SFX to new buttons
             document.querySelectorAll('.modal-btn').forEach(btn => {
                 btn.addEventListener('click', () => { clickAudio.currentTime = 0; clickAudio.play().catch(e=>{}); });
             });
@@ -323,7 +326,7 @@
             modal.classList.remove('active');
         }
 
-        // 5. AI REVIEW GENERATOR & CLIPBOARD SCRIPT (35 VARIATIONS)
+        // 5. AI REVIEW GENERATOR & SINGLE-CLICK AUTO-REDIRECT
         const reviews = [
             "Bhanu Mobiles is the best mobile store in Khammam! They have every new model available.",
             "Absolutely premium service! Bought my new smartphone here and the staff was super helpful.",
@@ -363,20 +366,38 @@
         ];
 
         function generateAndRedirect() {
-            // Play success SFX
+            const btn = document.getElementById('reviewBtnMain');
+            
+            // 1. Play success SFX
             successAudio.currentTime = 0;
             successAudio.play().catch(e => console.log('Audio blocked'));
 
-            // Select random AI review
+            // 2. Select random AI review
             const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
             
-            // Copy to clipboard
+            // 3. Write to clipboard and trigger auto-redirect VFX
             navigator.clipboard.writeText(randomReview).then(() => {
-                alert("✅ Review Copied!\n\nReview Text: \"" + randomReview + "\"\n\nRedirecting to Google Maps... Just Hit Paste!");
-                // Redirect to Google Reviews
-                window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
+                
+                // Visual Button Change (VFX)
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check-circle"></i> Copied! Redirecting...';
+                btn.style.backgroundColor = '#28a745'; // Change to green
+                btn.style.boxShadow = '0 0 20px #28a745';
+                
+                // 4. Delay redirect slightly so user sees the success state & hears the sound
+                setTimeout(() => {
+                    window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
+                    
+                    // Reset button back to normal after a couple of seconds (in case they swipe back)
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style = '';
+                    }, 2000);
+                }, 1200); // 1.2 seconds delay
+
             }).catch(err => {
                 console.error('Could not copy text: ', err);
+                // Fallback direct navigation if clipboard fails
                 window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
             });
         }
