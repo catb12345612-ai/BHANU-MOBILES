@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BHANU MOBILES - Premium Mobile Store</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron for Tech Vibe, Rajdhani for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CORE VARIABLES - NEON THEME */
+        :root {
+            --bg-dark: #05050a;
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --glass-bg: rgba(10, 10, 15, 0.75);
+            --white: #ffffff;
+        }
+
+        /* RESET & BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--white);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* DYNAMIC BACKGROUND (5 IMAGES PER MINUTE = EVERY 12s) */
+        #bg-slider {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1.5s ease-in-out;
+            filter: brightness(0.25) contrast(1.2);
+        }
+
+        /* NEON GRID OVERLAY */
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        /* LAYOUT CONTAINER */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            min-height: 100vh;
+            padding: 25px 20px;
+            border-left: 1px solid rgba(0,243,255,0.2);
+            border-right: 1px solid rgba(0,243,255,0.2);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.1);
+        }
+
+        /* HEADER & LOGO */
+        .header-section { text-align: center; padding-bottom: 25px; border-bottom: 2px solid var(--neon-purple); animation: fadeInDown 1s ease; }
+        
+        .store-logo-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue), inset 0 0 20px var(--neon-blue);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .store-logo-img:hover { transform: scale(1.08); box-shadow: 0 0 40px var(--neon-purple); border-color: var(--neon-purple); }
+
+        .store-name { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 2.6rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+        }
+        .store-sub { font-size: 1.2rem; color: #d1d1d1; margin-top: 5px; font-weight: 600; letter-spacing: 1px; }
+        .tagline { background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; font-size: 1.1rem; margin-top: 10px; }
+
+        /* CONTACT & SOCIAL BUTTONS (NEON VFX) */
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 30px 0; }
+        
+        .action-btn {
+            background: rgba(0,0,0,0.6);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--white);
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: 0.5s; }
+        .action-btn:hover::before { left: 100%; }
+        
+        .btn-call { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0,243,255,0.2); }
+        .btn-call:hover { background: rgba(0,243,255,0.1); box-shadow: 0 0 25px var(--neon-blue); text-shadow: 0 0 8px var(--neon-blue); }
+        
+        .btn-wa { border-color: #25D366; box-shadow: 0 0 15px rgba(37,211,102,0.2); }
+        .btn-wa:hover { background: rgba(37,211,102,0.1); box-shadow: 0 0 25px #25D366; text-shadow: 0 0 8px #25D366; }
+
+        .btn-ig { border-color: #E1306C; box-shadow: 0 0 15px rgba(225,48,108,0.2); }
+        .btn-ig:hover { background: rgba(225,48,108,0.1); box-shadow: 0 0 25px #E1306C; text-shadow: 0 0 8px #E1306C; }
+
+        .btn-map { border-color: #EA4335; box-shadow: 0 0 15px rgba(234,67,53,0.2); }
+        .btn-map:hover { background: rgba(234,67,53,0.1); box-shadow: 0 0 25px #EA4335; text-shadow: 0 0 8px #EA4335; }
+
+        .action-btn i { font-size: 1.8rem; margin-bottom: 8px; }
+        .action-btn span { font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* MULTI-OPTION MODAL (Hiding Numbers) */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 100; opacity: 0; visibility: hidden; transition: 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: #111; border: 2px solid var(--neon-blue);
+            padding: 30px; border-radius: 15px; width: 90%; max-width: 400px;
+            text-align: center; box-shadow: 0 0 30px var(--neon-blue);
+            transform: scale(0.8); transition: 0.3s ease;
+        }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        
+        .modal-title { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--neon-blue); margin-bottom: 20px; }
+        
+        .modal-btn {
+            display: block; width: 100%; padding: 15px; margin-bottom: 15px;
+            background: transparent; border: 1px solid var(--neon-purple); color: #fff;
+            text-decoration: none; font-size: 1.2rem; font-weight: 700; border-radius: 8px;
+            transition: 0.3s; cursor: pointer;
+        }
+        .modal-btn:hover { background: var(--neon-purple); box-shadow: 0 0 20px var(--neon-purple); }
+        .close-modal { color: #888; cursor: pointer; font-weight: bold; margin-top: 10px; display: inline-block; }
+        .close-modal:hover { color: #fff; }
+
+        /* REVIEW SECTION (AUTO CLIPBOARD) */
+        .review-section { text-align: center; background: rgba(0,0,0,0.5); padding: 30px; border-radius: 15px; border: 1px solid var(--neon-blue); margin: 40px 0; position: relative; overflow: hidden; }
+        .review-section::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(0,243,255,0.1) 0%, transparent 60%); animation: rotateGlow 10s linear infinite; z-index: -1; }
+        
+        .review-title { font-family: 'Orbitron'; font-size: 1.6rem; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px var(--neon-purple); }
+        .review-btn { 
+            background: transparent; color: var(--neon-blue); font-size: 1.2rem; font-family: 'Orbitron'; font-weight: 700; 
+            padding: 15px 30px; border: 2px solid var(--neon-blue); border-radius: 30px; cursor: pointer; 
+            text-transform: uppercase; transition: 0.3s; width: 100%; margin-top: 15px;
+            box-shadow: 0 0 15px rgba(0,243,255,0.4), inset 0 0 10px rgba(0,243,255,0.2);
+            animation: pulseGlow 2s infinite; 
+        }
+        .review-btn:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 30px var(--neon-blue); }
+        .review-note { font-size: 0.9rem; color: #aaa; margin-top: 15px; font-weight: 600; }
+
+        /* FOOTER / DEVELOPER INFO */
+        .footer { text-align: center; padding: 40px 0 20px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .dev-badge { 
+            display: inline-flex; flex-direction: column; align-items: center;
+            background: rgba(0,0,0,0.6); padding: 20px; border-radius: 20px; 
+            border: 1px solid #333; text-decoration: none; transition: 0.4s; 
+        }
+        .dev-badge:hover { border-color: var(--neon-purple); background: rgba(188, 19, 254, 0.1); box-shadow: 0 0 30px rgba(188, 19, 254, 0.3); transform: translateY(-5px); }
+        .dev-logo-img { width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--neon-purple); margin-bottom: 12px; box-shadow: 0 0 15px var(--neon-purple); transition: 0.5s ease; }
+        .dev-badge:hover .dev-logo-img { transform: rotate(360deg); box-shadow: 0 0 25px var(--neon-blue); border-color: var(--neon-blue); }
+        .dev-text { color: #aaa; font-size: 0.9rem; font-weight: 600; }
+        .dev-name { color: var(--white); font-weight: 900; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; margin-top: 5px; letter-spacing: 1px; text-shadow: 0 0 8px var(--neon-blue); }
+
+        /* ANIMATIONS */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 15px rgba(0,243,255,0.4); } 50% { box-shadow: 0 0 30px rgba(0,243,255,0.8); } 100% { box-shadow: 0 0 15px rgba(0,243,255,0.4); } }
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .fade-in-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in-scroll.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- DYNAMIC BACKGROUND -->
+    <div id="bg-slider"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- UI SOUND EFFECTS (SFX) -->
+    <audio id="sfx-click" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <audio id="sfx-success" src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3"></audio>
+
+    <div class="container">
+        
+        <!-- HEADER WITH STORE LOGO -->
+        <header class="header-section">
+            <img src="bhanu.mob.jpeg" alt="Bhanu Mobiles Logo" class="store-logo-img click-sfx">
+            <h1 class="store-name">Bhanu Mobiles</h1>
+            <div class="store-sub">Khammam's Most Premier Mobile Store</div>
+            <div class="tagline"><i class="fa-solid fa-bolt"></i> All Mobiles & Accessories Available <i class="fa-solid fa-bolt"></i></div>
+        </header>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-grid fade-in-scroll">
+            <!-- Call Button triggers Modal -->
+            <div class="action-btn btn-call click-sfx" onclick="openModal('call')">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span>Call Us</span>
+            </div>
+            
+            <!-- WhatsApp Button triggers Modal -->
+            <div class="action-btn btn-wa click-sfx" onclick="openModal('wa')">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </div>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/bhanu_mobiles_?utm_source=qr&stkn=MWxyZnZyOXE4eWVkNQ%3D%3D" class="action-btn btn-ig click-sfx" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+
+            <!-- Maps -->
+            <a href="https://www.google.com/maps?cid=9031115967170568013" class="action-btn btn-map click-sfx" target="_blank">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Store Location</span>
+            </a>
+        </div>
+
+        <!-- AUTO-GENERATED REVIEW SECTION -->
+        <div class="review-section fade-in-scroll">
+            <h3 class="review-title">Rate Our Service <i class="fa-solid fa-star" style="color: gold;"></i></h3>
+            <p style="font-size: 1rem; color: #ddd; font-weight: 600;">Tap below to let our AI generate a premium 5-Star Review for you!</p>
+            <button class="review-btn click-sfx" onclick="generateAndRedirect()">
+                <i class="fa-brands fa-google"></i> Auto-Generate & Post
+            </button>
+            <div class="review-note">System will auto-copy text & open Google Maps. Just Hit Paste!</div>
+        </div>
+
+        <!-- FOOTER / DEVELOPER LOGO -->
+        <footer class="footer fade-in-scroll">
+            <a href="https://catb12345612-ai.github.io/Syed-Zeeshaan-Ali-High-Fledged-Engineering-And-Digital-Tech-Solutions-REVIEW/" target="_blank" class="dev-badge click-sfx">
+                <img src="dev-logo.png.png" alt="Developer Logo" class="dev-logo-img">
+                <span class="dev-text">Engineered & Developed By</span>
+                <span class="dev-name">SYED ZEESHAAN ALI</span>
+            </a>
+        </footer>
+
+    </div>
+
+    <!-- MODAL FOR DUAL NUMBERS -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Choose an Option</h3>
+            <div id="modalButtons">
+                <!-- Buttons injected via JS -->
+            </div>
+            <span class="close-modal click-sfx" onclick="closeModal()">[ CLOSE ]</span>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        // 1. DYNAMIC BACKGROUND IMAGE CHANGER (5 PER MINUTE = EVERY 12 SECONDS)
+        const bgImages = [
+            'https://images.unsplash.com/photo-1601784551446-20c9e07cd561?q=80&w=1470&auto=format&fit=crop', // Gadgets/Mobiles
+            'https://images.unsplash.com/photo-1556656793-08538906a9f8?q=80&w=1470&auto=format&fit=crop', // iPhone Box/Store
+            'https://images.unsplash.com/photo-1585060544812-6b45742d762f?q=80&w=1481&auto=format&fit=crop', // Mobile display
+            'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?q=80&w=1470&auto=format&fit=crop', // Samsung/Android tech
+            'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1470&auto=format&fit=crop'  // Cyberpunk/Tech vibe
+        ];
+        
+        let bgIndex = 0;
+        const bgSlider = document.getElementById('bg-slider');
+        
+        function changeBackground() {
+            bgSlider.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
+            bgIndex = (bgIndex + 1) % bgImages.length;
+        }
+        
+        changeBackground(); // Init
+        setInterval(changeBackground, 12000); // 12,000ms = 12s (5 times per 60s)
+
+        // 2. SCROLL VFX ANIMATION
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -20px 0px" };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in-scroll').forEach(el => observer.observe(el));
+
+        // 3. SOUND EFFECTS (SFX)
+        const clickAudio = document.getElementById('sfx-click');
+        const successAudio = document.getElementById('sfx-success');
+        
+        document.querySelectorAll('.click-sfx').forEach(btn => {
+            btn.addEventListener('click', () => {
+                clickAudio.currentTime = 0;
+                clickAudio.play().catch(e => console.log('Audio blocked'));
+            });
+        });
+
+        // 4. MODAL LOGIC FOR HIDDEN NUMBERS
+        const numbers = {
+            num1: "9908768058",
+            num2: "8886222446"
+        };
+        const modal = document.getElementById('contactModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalButtons = document.getElementById('modalButtons');
+
+        function openModal(type) {
+            modalButtons.innerHTML = ''; // clear previous
+            
+            if(type === 'call') {
+                modalTitle.innerHTML = '<i class="fa-solid fa-phone"></i> Select Contact';
+                modalButtons.innerHTML = `
+                    <a href="tel:${numbers.num1}" class="modal-btn click-sfx">Call Helpdesk 1</a>
+                    <a href="tel:${numbers.num2}" class="modal-btn click-sfx">Call Helpdesk 2</a>
+                `;
+            } else if (type === 'wa') {
+                modalTitle.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Select WhatsApp';
+                modalButtons.innerHTML = `
+                    <a href="https://wa.me/91${numbers.num1}" target="_blank" class="modal-btn click-sfx">WhatsApp Support 1</a>
+                    <a href="https://wa.me/91${numbers.num2}" target="_blank" class="modal-btn click-sfx">WhatsApp Support 2</a>
+                `;
+            }
+            
+            // Re-bind SFX to new buttons
+            document.querySelectorAll('.modal-btn').forEach(btn => {
+                btn.addEventListener('click', () => { clickAudio.currentTime = 0; clickAudio.play().catch(e=>{}); });
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // 5. AI REVIEW GENERATOR & CLIPBOARD SCRIPT (35 VARIATIONS)
+        const reviews = [
+            "Bhanu Mobiles is the best mobile store in Khammam! They have every new model available.",
+            "Absolutely premium service! Bought my new smartphone here and the staff was super helpful.",
+            "Best prices and authentic accessories. Bhanu Mobiles never disappoints.",
+            "Khammam's most premier mobile store without a doubt. The neon vibe of the shop is amazing!",
+            "Highly recommend Bhanu Mobiles. They gave me a great discount on my tempered glass and cover.",
+            "Fastest mobile repair service in town! Totally trust them with my gadgets.",
+            "Excellent customer receiving. They explain the features of all mobiles very patiently.",
+            "100% genuine products. If you are looking to buy an iPhone or Android, this is the spot.",
+            "Great exchange value for old phones! Very happy with my purchase at Bhanu Mobiles.",
+            "They have a massive collection of back pouches and smartwatches. Love this store!",
+            "The hospitality and technical knowledge of the staff here is top tier. 5 stars!",
+            "Got my phone display fixed in record time. Original parts and great pricing.",
+            "Bhanu Mobiles is my go-to tech store. Best EMI options available easily.",
+            "Very transparent pricing. No hidden charges when buying gadgets here.",
+            "The variety of Bluetooth earphones and gadgets available here is mind-blowing.",
+            "Premium store ambience and premium service. Highly recommended in Khammam.",
+            "I have visited many mobile shops, but Bhanu Mobiles offers the best customer satisfaction.",
+            "Bought a 5G phone yesterday. The setup process was handled beautifully by the team.",
+            "Trustworthy and reliable. I send all my friends and family to Bhanu Mobiles.",
+            "Excellent after-sales support. They actually care about the customer even after the purchase.",
+            "Best place for Apple and Samsung products in Khammam city.",
+            "They perfectly transferred all my data from my old phone to the new one. Thank you!",
+            "Super fast billing and very polite owner. 5-star experience guaranteed.",
+            "Unbeatable prices on all electronic accessories. Highly satisfied.",
+            "I love how updated their stock is. Every latest launch is instantly available here.",
+            "If you want genuine mobile spares and accessories, this is the only shop you need.",
+            "The best mobile showroom in Telangana! Huge variety and great deals.",
+            "Very clean and hygienic store. The staff maintains great professionalism.",
+            "They guided me to buy the perfect phone for my budget. Extremely thankful to Bhanu Mobiles.",
+            "Bought a gaming phone from here. Performance is awesome and the buying experience was smooth.",
+            "Five stars for the incredible service and wide range of smart gadgets available.",
+            "I bought a charger and some cables. 100% original quality. Great shop!",
+            "The owner is very friendly and suggests the best mobiles according to our needs.",
+            "Highly secure data transfer and honest opinions on which phone to buy. Love it.",
+            "Bhanu Mobiles truly stands up to its name as Khammam's premier mobile store!"
+        ];
+
+        function generateAndRedirect() {
+            // Play success SFX
+            successAudio.currentTime = 0;
+            successAudio.play().catch(e => console.log('Audio blocked'));
+
+            // Select random AI review
+            const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(randomReview).then(() => {
+                alert("✅ AI 5-Star Review Copied!\n\nReview Text: \"" + randomReview + "\"\n\nRedirecting to Google Maps... Just Hit Paste!");
+                // Redirect to Google Reviews
+                window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+                window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
+            });
+        }
+    </script>
+</body>
+</html>
