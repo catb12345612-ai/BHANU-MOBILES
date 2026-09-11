@@ -6,18 +6,18 @@
     <title>BHANU MOBILES - Premium Mobile Store</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Modern & Clean -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: High-End Modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
         /* ATTRACTIVE VIBRANT COLOR VARIABLES */
         :root {
-            --bg-base: #090a0f;
-            --cyan: #00e5ff;
-            --pink: #ff007f;
-            --glass-bg: rgba(15, 16, 25, 0.85);
+            --bg-base: #05050a;
+            --neon-blue: #00f3ff;
+            --neon-purple: #bc13fe;
+            --glass-bg: rgba(10, 12, 20, 0.85);
             --white: #ffffff;
-            --text-light: #d1d5db;
+            --text-light: #e0e0e0;
         }
 
         /* RESET & BASE */
@@ -30,78 +30,76 @@
             scroll-behavior: smooth;
         }
 
-        /* DYNAMIC BACKGROUND WITH OVERLAY */
+        /* DYNAMIC BACKGROUND (HIGHLY COMPRESSED FOR FAST LOADING) */
         #bg-slider {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
             background-size: cover;
             background-position: center;
-            transition: background-image 1.5s ease-in-out;
-            filter: brightness(0.25) contrast(1.1);
+            transition: background-image 1.2s ease-in-out;
+            filter: brightness(0.2) contrast(1.2);
         }
         
         .gradient-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
-            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(255, 0, 127, 0.1));
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.15), rgba(188, 19, 254, 0.15));
             pointer-events: none;
         }
 
         /* LAYOUT CONTAINER */
         .container {
-            max-width: 550px;
+            max-width: 500px;
             margin: 0 auto;
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             min-height: 100vh;
-            padding: 35px 25px;
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-            border-left: 1px solid rgba(0, 229, 255, 0.2);
-            border-right: 1px solid rgba(255, 0, 127, 0.2);
+            padding: 35px 20px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            border-left: 1px solid rgba(0, 243, 255, 0.3);
+            border-right: 1px solid rgba(188, 19, 254, 0.3);
         }
 
         /* HEADER & STORE LOGO */
-        .header-section { text-align: center; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); animation: fadeInDown 1s ease; }
+        .header-section { text-align: center; padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); animation: fadeInDown 0.8s ease; }
         
         .store-logo-img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 15px;
-            border: 3px solid transparent;
-            background-image: linear-gradient(var(--glass-bg), var(--glass-bg)), linear-gradient(135deg, var(--cyan), var(--pink));
-            background-origin: border-box;
-            background-clip: content-box, border-box;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid var(--neon-blue);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            background: #fff; /* In case the PNG is transparent */
         }
-        .store-logo-img:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 0, 127, 0.6); }
+        .store-logo-img:hover { 
+            transform: scale(1.08) rotate(5deg); 
+            box-shadow: 0 0 35px var(--neon-purple); 
+            border-color: var(--neon-purple); 
+        }
 
         /* VFX: TEXT GLOW ON TOUCH/HOVER */
-        .glow-text { transition: text-shadow 0.3s ease, color 0.3s ease; }
-        .glow-text:hover, .glow-text:active { 
-            text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan), 0 0 30px var(--white); 
-            color: var(--white); 
-        }
-        .glow-text-pink:hover, .glow-text-pink:active { 
-            text-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink), 0 0 30px var(--white); 
-        }
+        .glow-text { transition: text-shadow 0.3s ease; }
+        .glow-text:hover, .glow-text:active { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px #fff; }
+        
+        .glow-text-purple:hover, .glow-text-purple:active { text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px #fff; }
 
         .store-name { 
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.4rem; 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.6rem; 
             font-weight: 900; 
             text-transform: uppercase; 
             letter-spacing: 2px;
-            background: linear-gradient(to right, var(--cyan), var(--pink));
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .store-sub { font-size: 1rem; color: var(--text-light); margin-top: 5px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .store-sub { font-size: 1.1rem; color: var(--text-light); margin-top: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
         /* CONTACT & SOCIAL BUTTONS */
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 35px 0; }
@@ -121,16 +119,15 @@
             border: none;
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
         
         /* Vibrant Solid Button Colors */
-        .btn-call { background: linear-gradient(135deg, #0052D4, #4364F7); box-shadow: 0 5px 15px rgba(67, 100, 247, 0.4); }
-        .btn-wa { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 5px 15px rgba(56, 239, 125, 0.4); }
-        .btn-ig { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); box-shadow: 0 5px 15px rgba(221, 42, 123, 0.4); }
-        .btn-map { background: linear-gradient(135deg, #ff416c, #ff4b2b); box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4); }
+        .btn-call { background: linear-gradient(135deg, #0052D4, #4364F7); box-shadow: 0 5px 15px rgba(67, 100, 247, 0.3); }
+        .btn-wa { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 5px 15px rgba(56, 239, 125, 0.3); }
+        .btn-ig { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); box-shadow: 0 5px 15px rgba(221, 42, 123, 0.3); }
+        .btn-map { background: linear-gradient(135deg, #ff416c, #ff4b2b); box-shadow: 0 5px 15px rgba(255, 75, 43, 0.3); }
 
-        .action-btn:hover { transform: translateY(-4px); filter: brightness(1.2); }
+        .action-btn:hover { transform: translateY(-5px); filter: brightness(1.2); box-shadow: 0 8px 20px rgba(255,255,255,0.2); }
         .action-btn i { font-size: 1.8rem; margin-bottom: 8px; }
         .action-btn span { font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
 
@@ -144,46 +141,46 @@
         .modal-overlay.active { opacity: 1; visibility: visible; }
         
         .modal-content {
-            background: #11141a; border: 1px solid var(--cyan);
+            background: #0a0a0f; border: 2px solid var(--neon-blue);
             padding: 30px; border-radius: 15px; width: 90%; max-width: 350px;
-            text-align: center; box-shadow: 0 10px 40px rgba(0, 229, 255, 0.3);
+            text-align: center; box-shadow: 0 10px 40px rgba(0, 243, 255, 0.4);
             transform: scale(0.9); transition: 0.3s ease;
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         
-        .modal-title { font-size: 1.4rem; color: var(--cyan); margin-bottom: 20px; font-weight: 700; font-family: 'Montserrat', sans-serif;}
+        .modal-title { font-size: 1.4rem; color: var(--neon-blue); margin-bottom: 20px; font-weight: 700; font-family: 'Orbitron', sans-serif;}
         
         .modal-btn {
             display: block; width: 100%; padding: 14px; margin-bottom: 12px;
-            background: rgba(0, 229, 255, 0.1); color: var(--white);
-            border: 1px solid var(--cyan);
+            background: rgba(0, 243, 255, 0.1); color: var(--white);
+            border: 1px solid var(--neon-blue);
             text-decoration: none; font-size: 1.1rem; font-weight: 600; border-radius: 8px;
             transition: 0.3s; cursor: pointer;
         }
-        .modal-btn:hover { background: var(--cyan); color: #000; box-shadow: 0 0 15px var(--cyan); }
+        .modal-btn:hover { background: var(--neon-blue); color: #000; box-shadow: 0 0 20px var(--neon-blue); }
         .close-modal { color: #888; cursor: pointer; font-size: 0.9rem; margin-top: 15px; display: inline-block; text-transform: uppercase; font-weight: 700; }
-        .close-modal:hover { color: var(--pink); }
+        .close-modal:hover { color: var(--neon-purple); }
 
         /* AUTO REVIEW SECTION (ATTRACTIVE) */
         .review-section { 
-            text-align: center; background: rgba(0,0,0,0.4); padding: 35px 25px; 
+            text-align: center; background: rgba(0,0,0,0.5); padding: 35px 25px; 
             border-radius: 15px; margin: 40px 0; border: 1px solid rgba(255, 255, 255, 0.1); 
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.7);
         }
         
-        .review-title { font-size: 1.5rem; margin-bottom: 10px; color: #fff; font-weight: 700; font-family: 'Montserrat', sans-serif;}
+        .review-title { font-size: 1.6rem; margin-bottom: 10px; color: #fff; font-weight: 700; font-family: 'Orbitron', sans-serif;}
         
         /* Moving Gradient Button */
         .review-btn { 
-            background: linear-gradient(270deg, var(--cyan), var(--pink), #8e2de2, var(--cyan));
+            background: linear-gradient(270deg, var(--neon-blue), var(--neon-purple), #8e2de2, var(--neon-blue));
             background-size: 300% 300%;
             color: #fff; font-size: 1.1rem; font-weight: 700; font-family: 'Poppins', sans-serif;
-            padding: 15px 25px; border: none; border-radius: 30px; cursor: pointer; 
+            padding: 16px 25px; border: none; border-radius: 30px; cursor: pointer; 
             text-transform: uppercase; transition: all 0.3s ease; width: 100%; margin-top: 15px;
             animation: moveGradient 4s ease infinite;
-            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 5px 20px rgba(188, 19, 254, 0.4);
         }
-        .review-btn:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(0, 229, 255, 0.6); }
+        .review-btn:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(0, 243, 255, 0.6); }
         
         .review-note { font-size: 0.85rem; color: #aaa; margin-top: 15px; }
 
@@ -193,26 +190,26 @@
             display: inline-flex; 
             flex-direction: column; 
             align-items: center;
-            background: rgba(0,0,0,0.5); 
+            background: rgba(0,0,0,0.6); 
             padding: 12px 20px; 
-            border-radius: 12px; 
+            border-radius: 15px; 
             border: 1px solid rgba(255,255,255,0.1); 
             text-decoration: none; 
             transition: 0.3s; 
         }
-        .dev-badge:hover { border-color: var(--cyan); background: rgba(0, 229, 255, 0.05); transform: translateY(-3px); }
+        .dev-badge:hover { border-color: var(--neon-blue); background: rgba(0, 243, 255, 0.05); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
         .dev-logo-img { 
-            width: 55px; 
-            height: 55px; 
+            width: 60px; 
+            height: 60px; 
             border-radius: 50%; 
             margin-bottom: 8px; 
-            border: 2px solid var(--cyan);
+            border: 2px solid var(--neon-blue);
             object-fit: cover;
             transition: 0.4s ease; 
         }
-        .dev-badge:hover .dev-logo-img { transform: rotate(10deg) scale(1.1); box-shadow: 0 0 10px var(--cyan); }
+        .dev-badge:hover .dev-logo-img { transform: rotate(15deg) scale(1.1); box-shadow: 0 0 15px var(--neon-blue); }
         .dev-text { color: #aaa; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px;}
-        .dev-name { color: var(--white); font-weight: 700; font-size: 0.95rem; font-family: 'Montserrat', sans-serif;}
+        .dev-name { color: var(--white); font-weight: 700; font-size: 0.95rem; font-family: 'Orbitron', sans-serif;}
 
         /* COPYRIGHT TEXT */
         .copyright-text {
@@ -243,34 +240,30 @@
 
     <div class="container">
         
-        <!-- HEADER WITH STORE LOGO (FIXED PATH) -->
+        <!-- HEADER WITH EXACT LOGO NAME -->
         <header class="header-section">
-            <img src="bhanu.mob.jpeg" alt="Bhanu Mobiles Logo" class="store-logo-img click-sfx" onerror="this.src='https://via.placeholder.com/150/111/00e5ff?text=Bhanu+Mobiles'">
+            <img src="bhanu.mob.png" alt="Bhanu Mobiles Logo" class="store-logo-img click-sfx">
             <h1 class="store-name glow-text">Bhanu Mobiles</h1>
-            <div class="store-sub glow-text-pink">Khammam's Premier Tech Hub</div>
+            <div class="store-sub glow-text-purple">Khammam's Premier Tech Hub</div>
         </header>
 
         <!-- ACTION BUTTONS -->
         <div class="action-grid fade-in-scroll">
-            <!-- Call Button triggers Modal -->
             <div class="action-btn btn-call click-sfx" onclick="openModal('call')">
                 <i class="fa-solid fa-phone"></i>
                 <span>Call Us</span>
             </div>
             
-            <!-- WhatsApp Button triggers Modal -->
             <div class="action-btn btn-wa click-sfx" onclick="openModal('wa')">
                 <i class="fa-brands fa-whatsapp"></i>
                 <span>WhatsApp</span>
             </div>
 
-            <!-- Instagram -->
             <a href="https://www.instagram.com/bhanu_mobiles_?utm_source=qr&stkn=MWxyZnZyOXE4eWVkNQ%3D%3D" class="action-btn btn-ig click-sfx" target="_blank">
                 <i class="fa-brands fa-instagram"></i>
                 <span>Instagram</span>
             </a>
 
-            <!-- Maps -->
             <a href="https://www.google.com/maps?cid=9031115967170568013" class="action-btn btn-map click-sfx" target="_blank">
                 <i class="fa-solid fa-location-dot"></i>
                 <span>Location</span>
@@ -287,13 +280,13 @@
                 <i class="fa-brands fa-google"></i> Post a 5-Star Review
             </button>
             
-            <div class="review-note glow-text-pink"><i class="fa-solid fa-bolt"></i> Instantly copies text & opens Google Maps. Just Paste!</div>
+            <div class="review-note glow-text-purple"><i class="fa-solid fa-bolt"></i> Instantly copies text & opens Google Maps. Just Paste!</div>
         </div>
 
-        <!-- FOOTER / DEVELOPER LOGO (FIXED PATH & COMPACT) -->
+        <!-- FOOTER WITH EXACT DEV LOGO NAME -->
         <footer class="footer fade-in-scroll">
             <a href="https://catb12345612-ai.github.io/Syed-Zeeshaan-Ali-High-Fledged-Engineering-And-Digital-Tech-Solutions-REVIEW/" target="_blank" class="dev-badge click-sfx">
-                <img src="dev-logo.png.png" alt="Developer Logo" class="dev-logo-img" onerror="this.src='https://via.placeholder.com/150/111/ff007f?text=DEV'">
+                <img src="dev-logo.png (1)_3.jpg" alt="Developer Logo" class="dev-logo-img">
                 <span class="dev-text">Developed By</span>
                 <span class="dev-name glow-text">SYED ZEESHAAN ALI</span>
             </a>
@@ -315,14 +308,14 @@
 
     <!-- JAVASCRIPT ENGINE -->
     <script>
-        // 1. DYNAMIC BACKGROUND IMAGE CHANGER (5 PER MINUTE = EVERY 12 SECONDS)
-        // High quality webp format images for fast loading
+        // 1. DYNAMIC BACKGROUND IMAGE CHANGER (SHRUNK / HIGHLY COMPRESSED WEBP FORMAT)
+        // Added q=30, w=600, fm=webp to ensure ultra-fast loading without delay errors.
         const bgImages = [
-            'https://images.unsplash.com/photo-1601784551446-20c9e07cd561?auto=format&fit=crop&q=60&w=800&fm=webp', 
-            'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&q=60&w=800&fm=webp', 
-            'https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&q=60&w=800&fm=webp', 
-            'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=60&w=800&fm=webp', 
-            'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=60&w=800&fm=webp'
+            'https://images.unsplash.com/photo-1601784551446-20c9e07cd561?auto=format&fit=crop&q=30&w=600&fm=webp', 
+            'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&q=30&w=600&fm=webp', 
+            'https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&q=30&w=600&fm=webp', 
+            'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&q=30&w=600&fm=webp', 
+            'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=30&w=600&fm=webp'
         ];
         
         let bgIndex = 0;
@@ -450,8 +443,9 @@
                 const originalBackground = btn.style.background;
                 
                 btn.innerHTML = '<i class="fa-solid fa-check-circle"></i> Copied! Redirecting...';
-                btn.style.background = '#00c851'; // Success Green
-                btn.style.boxShadow = '0 0 20px #00c851';
+                btn.style.background = '#00e676'; // Vibrant Success Green
+                btn.style.color = '#000';
+                btn.style.boxShadow = '0 0 25px #00e676';
                 btn.style.animation = 'none'; // Stop gradient animation temporarily
                 
                 // 4. Delay redirect slightly so user sees the success state & hears the sound
@@ -462,6 +456,7 @@
                     setTimeout(() => {
                         btn.innerHTML = originalText;
                         btn.style.background = originalBackground;
+                        btn.style.color = '#fff';
                         btn.style.boxShadow = '';
                         btn.style.animation = 'moveGradient 4s ease infinite';
                     }, 2000);
