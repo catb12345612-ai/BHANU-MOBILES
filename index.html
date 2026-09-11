@@ -5,158 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BHANU MOBILES - Luxury Tech Store</title>
     
-    <!-- FontAwesome for Premium Icons -->
+    <!-- Premium Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts: Luxury & Minimalist -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Luxury Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* ULTRA-PREMIUM COLOR PALETTE: MIDNIGHT & GOLD */
+        /* ULTRA-PREMIUM COLOR PALETTE */
         :root {
-            --bg-black: #050505;
-            --gold-light: #F9E596;
+            --bg-black: #030303;
+            --gold-light: #FDF5A6;
             --gold-primary: #D4AF37;
-            --gold-dark: #AA7C11;
-            --glass-panel: rgba(15, 15, 15, 0.75);
+            --gold-dark: #8C7326;
+            --glass: rgba(18, 18, 18, 0.6);
             --text-main: #FFFFFF;
-            --text-muted: #A0A0A0;
-            --border-subtle: rgba(212, 175, 55, 0.2);
+            --text-muted: #999999;
+            --border-gold: rgba(212, 175, 55, 0.25);
         }
 
-        /* RESET & BASE */
+        /* RESET */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-main);
             background-color: var(--bg-black);
+            /* INSTANT LOAD LUXURY CSS BACKGROUND (Zero Lag) */
+            background-image: radial-gradient(circle at 50% 0%, #1f1d16 0%, #030303 60%);
+            background-attachment: fixed;
             overflow-x: hidden;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* DYNAMIC LUXURY BACKGROUND (ULTRA COMPRESSED FOR 0 LAG) */
-        #bg-slider {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2;
-            background-color: var(--bg-black);
-            background-size: cover;
-            background-position: center;
-            transition: background-image 1.5s ease-in-out;
-            filter: brightness(0.25) contrast(1.1);
-        }
-        
-        .luxury-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            background: radial-gradient(circle at center, transparent 0%, #000000 100%);
-            pointer-events: none;
-        }
-
-        /* PREMIUM GLASS CONTAINER */
+        /* CONTAINER */
         .container {
-            max-width: 520px;
+            max-width: 500px;
             margin: 0 auto;
-            background: var(--glass-panel);
+            background: var(--glass);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             min-height: 100vh;
             padding: 40px 25px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
-            border-left: 1px solid var(--border-subtle);
-            border-right: 1px solid var(--border-subtle);
+            border-left: 1px solid rgba(255,255,255,0.03);
+            border-right: 1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
         }
 
-        /* HEADER & LUXURY LOGO */
+        /* HEADER & LOGO */
         .header-section { 
             text-align: center; 
             padding-bottom: 30px; 
-            border-bottom: 1px solid var(--border-subtle); 
-            animation: fadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1); 
+            border-bottom: 1px solid var(--border-gold); 
+            animation: fadeIn 1s ease; 
         }
         
         .store-logo-wrapper {
             position: relative;
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             margin: 0 auto 20px;
             border-radius: 50%;
-            padding: 4px;
+            padding: 3px;
             background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+            transition: transform 0.5s ease;
         }
-        .store-logo-wrapper:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
-        }
+        .store-logo-wrapper:hover { transform: translateY(-5px); }
         
         .store-logo-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background: #fff;
-            border: 2px solid #000;
+            width: 100%; height: 100%; border-radius: 50%;
+            object-fit: cover; background: #fff;
+            border: 3px solid #000;
         }
 
         .store-name { 
             font-family: 'Cinzel', serif;
-            font-size: 2.8rem; 
+            font-size: 2.5rem; 
             font-weight: 700; 
-            letter-spacing: 3px;
-            background: linear-gradient(to right, var(--gold-light), var(--gold-primary), var(--gold-light));
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--gold-light), var(--gold-primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
         }
-        .store-sub { 
-            font-size: 0.95rem; 
-            color: var(--text-muted); 
-            font-weight: 400; 
-            text-transform: uppercase; 
-            letter-spacing: 4px; 
+        .store-sub { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; text-transform: uppercase; letter-spacing: 4px; margin-top: 5px; }
+
+        /* FEATURED PRODUCT SHOWCASE */
+        .featured-showcase {
+            margin: 35px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: fadeIn 1.2s ease;
+        }
+        .featured-img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .featured-showcase:hover .featured-img { transform: scale(1.03); }
+        .featured-tag {
+            background: #111;
+            color: var(--gold-light);
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+            border-top: 1px solid var(--border-gold);
         }
 
         /* PREMIUM ACTION BUTTONS */
-        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 40px 0; }
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 35px 0; }
         
         .action-btn {
-            padding: 20px 10px;
-            border-radius: 12px;
-            text-align: center;
-            color: var(--text-main);
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            padding: 20px 10px; border-radius: 12px; text-align: center;
+            color: var(--text-main); text-decoration: none;
+            transition: all 0.4s ease; cursor: pointer;
+            display: flex; flex-direction: column; align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
         .action-btn:hover { 
-            background: rgba(212, 175, 55, 0.1); 
+            background: rgba(212, 175, 55, 0.08); 
             border-color: var(--gold-primary); 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
+            transform: translateY(-4px); 
+        }
+        .action-btn i { font-size: 1.8rem; margin-bottom: 10px; color: var(--gold-primary); transition: 0.3s; }
+        .action-btn:hover i { color: var(--gold-light); }
+        .action-btn span { font-weight: 500; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* LUXURY REVIEW SECTION */
+        .review-section { 
+            text-align: center; background: rgba(0,0,0,0.4); 
+            padding: 40px 25px; border-radius: 12px; margin: 40px 0; 
+            border: 1px solid var(--border-gold); 
         }
         
-        .action-btn i { 
-            font-size: 1.8rem; 
-            margin-bottom: 10px; 
-            color: var(--gold-primary); 
-            transition: 0.3s; 
+        .review-title { font-family: 'Cinzel', serif; font-size: 1.6rem; margin-bottom: 10px; color: var(--gold-light); }
+        
+        .review-btn { 
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold-primary));
+            color: #000; font-size: 0.95rem; font-weight: 700; font-family: 'Montserrat', sans-serif;
+            padding: 18px 25px; border: none; border-radius: 8px; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; width: 100%; margin-top: 20px;
         }
-        .action-btn:hover i { color: var(--gold-light); text-shadow: 0 0 15px var(--gold-primary); }
-        .action-btn span { font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; }
+        .review-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2); filter: brightness(1.1); }
+        .review-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 15px; letter-spacing: 0.5px; }
 
-        /* MODAL SYSTEM (LUXURY) */
+        /* FOOTER / DEVELOPER INFO */
+        .footer { text-align: center; padding: 30px 0 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .dev-badge { 
+            display: inline-flex; flex-direction: column; align-items: center;
+            background: transparent; padding: 10px; text-decoration: none; transition: 0.4s; 
+        }
+        .dev-badge:hover { transform: translateY(-3px); }
+        
+        .dev-logo-img { 
+            width: 50px; height: 50px; border-radius: 50%; margin-bottom: 10px; 
+            border: 1px solid rgba(255,255,255,0.2); object-fit: cover; transition: 0.5s ease; 
+        }
+        .dev-badge:hover .dev-logo-img { border-color: var(--gold-primary); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+        
+        .dev-text { color: #666; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px;}
+        .dev-name { color: var(--text-muted); font-weight: 500; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s;}
+        .dev-badge:hover .dev-name { color: var(--gold-light); }
+
+        .copyright-text { font-size: 0.65rem; color: #444; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
@@ -166,117 +186,53 @@
         .modal-overlay.active { opacity: 1; visibility: visible; }
         
         .modal-content {
-            background: #0a0a0a; border: 1px solid var(--gold-primary);
-            padding: 40px 30px; border-radius: 15px; width: 90%; max-width: 360px;
-            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            transform: translateY(20px); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: #080808; border: 1px solid var(--gold-primary);
+            padding: 40px 30px; border-radius: 12px; width: 90%; max-width: 360px;
+            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+            transform: translateY(20px); transition: 0.4s ease;
         }
         .modal-overlay.active .modal-content { transform: translateY(0); }
         
-        .modal-title { font-family: 'Cinzel', serif; font-size: 1.6rem; color: var(--gold-light); margin-bottom: 25px;}
+        .modal-title { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold-light); margin-bottom: 25px;}
         
         .modal-btn {
             display: block; width: 100%; padding: 15px; margin-bottom: 15px;
-            background: transparent; color: var(--text-main);
-            border: 1px solid var(--border-subtle);
-            text-decoration: none; font-size: 1rem; font-weight: 400; border-radius: 8px;
+            background: transparent; color: var(--text-main); border: 1px solid var(--border-gold);
+            text-decoration: none; font-size: 0.9rem; font-weight: 500; border-radius: 8px;
             letter-spacing: 1px; transition: 0.3s; cursor: pointer; text-transform: uppercase;
         }
-        .modal-btn:hover { background: var(--gold-primary); color: #000; border-color: var(--gold-primary); font-weight: 600; }
-        
-        .close-modal { color: #666; cursor: pointer; font-size: 0.85rem; margin-top: 20px; display: inline-block; text-transform: uppercase; font-weight: 500; letter-spacing: 2px;}
+        .modal-btn:hover { background: var(--gold-primary); color: #000; border-color: var(--gold-primary); }
+        .close-modal { color: #555; cursor: pointer; font-size: 0.8rem; margin-top: 15px; display: inline-block; text-transform: uppercase; letter-spacing: 2px;}
         .close-modal:hover { color: var(--gold-primary); }
 
-        /* AUTO REVIEW SECTION (ELEGANT) */
-        .review-section { 
-            text-align: center; background: linear-gradient(180deg, rgba(20,20,20,0.8), rgba(5,5,5,0.9)); 
-            padding: 40px 25px; border-radius: 15px; margin: 40px 0; 
-            border: 1px solid var(--border-subtle); 
-        }
-        
-        .review-title { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 10px; color: var(--gold-light); letter-spacing: 1px;}
-        
-        .review-btn { 
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
-            background-size: 200% 200%;
-            color: #000; font-size: 1rem; font-weight: 700; font-family: 'Montserrat', sans-serif;
-            padding: 18px 25px; border: none; border-radius: 8px; cursor: pointer; 
-            text-transform: uppercase; letter-spacing: 1.5px; transition: all 0.4s ease; width: 100%; margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            animation: shimmerGold 4s ease infinite;
-        }
-        .review-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3); }
-        
-        .review-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 20px; letter-spacing: 0.5px; font-weight: 300;}
-
-        /* FOOTER / DEVELOPER INFO - HIGH-END COMPACT */
-        .footer { text-align: center; padding: 40px 0 10px; margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .dev-badge { 
-            display: inline-flex; 
-            flex-direction: column; 
-            align-items: center;
-            background: transparent;
-            padding: 10px; 
-            text-decoration: none; 
-            transition: 0.4s; 
-        }
-        .dev-badge:hover { transform: translateY(-3px); }
-        .dev-logo-img { 
-            width: 50px; 
-            height: 50px; 
-            border-radius: 50%; 
-            margin-bottom: 12px; 
-            border: 1px solid var(--border-subtle);
-            object-fit: cover;
-            transition: 0.5s ease; 
-        }
-        .dev-badge:hover .dev-logo-img { border-color: var(--gold-primary); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-        .dev-text { color: #666; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px;}
-        .dev-name { color: var(--text-muted); font-weight: 500; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s;}
-        .dev-badge:hover .dev-name { color: var(--gold-light); }
-
-        /* COPYRIGHT TEXT */
-        .copyright-text {
-            font-size: 0.65rem;
-            color: #444;
-            margin-top: 25px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* ANIMATIONS */
-        @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-30px); } 100% { opacity: 1; transform: translateY(0); } }
-        @keyframes shimmerGold { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-        
-        .fade-in-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .fade-in-scroll.visible { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-    <!-- DYNAMIC BACKGROUND -->
-    <div id="bg-slider"></div>
-    <div class="luxury-overlay"></div>
-
-    <!-- UI SOUND EFFECTS (SFX) -->
+    <!-- UI SOUND EFFECTS -->
     <audio id="sfx-click" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
     <audio id="sfx-success" src="https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3"></audio>
 
     <div class="container">
         
-        <!-- HEADER WITH EXACT LOGO NAME -->
+        <!-- HEADER WITH EXACT LOCAL STORE LOGO -->
         <header class="header-section">
             <div class="store-logo-wrapper click-sfx">
-                <!-- Exact file name as requested -->
                 <img src="bhanu.mob.png" alt="Bhanu Mobiles Logo" class="store-logo-img" onerror="this.src='https://via.placeholder.com/150/000/d4af37?text=BM'">
             </div>
             <h1 class="store-name">Bhanu Mobiles</h1>
             <div class="store-sub">Premium Tech Destination</div>
         </header>
 
+        <!-- NEW: FEATURED PRODUCT SHOWCASE -->
+        <div class="featured-showcase click-sfx">
+            <img src="Screenshot 2025-07-04 082445.jpg" alt="Huawei MateBook Fold Pricing" class="featured-img" onerror="this.style.display='none'">
+            <div class="featured-tag">Latest Premium Arrivals</div>
+        </div>
+
         <!-- LUXURY ACTION BUTTONS -->
-        <div class="action-grid fade-in-scroll">
+        <div class="action-grid">
             <div class="action-btn click-sfx" onclick="openModal('call')">
                 <i class="fa-solid fa-phone"></i>
                 <span>Concierge</span>
@@ -299,23 +255,22 @@
         </div>
 
         <!-- AUTO-GENERATED REVIEW SECTION -->
-        <div class="review-section fade-in-scroll">
+        <div class="review-section">
             <h3 class="review-title">Client Experience</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 300;">Tap below to generate & copy a 5-Star testimonial.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); font-weight: 300;">Tap below to instantly generate & copy a 5-Star testimonial.</p>
             
-            <!-- SINGLE TAP COPY & REDIRECT BUTTON -->
+            <!-- SINGLE TAP COPY & REDIRECT -->
             <button class="review-btn click-sfx" id="reviewBtnMain" onclick="generateAndRedirect()">
                 <i class="fa-brands fa-google" style="margin-right: 8px;"></i> Submit a Review
             </button>
             
-            <div class="review-note">System automatically securely copies text & navigates to Google.</div>
+            <div class="review-note">System automatically copies text & navigates to Google.</div>
         </div>
 
-        <!-- FOOTER WITH EXACT DEV LOGO NAME -->
-        <footer class="footer fade-in-scroll">
+        <!-- FOOTER WITH EXACT DEVELOPER LOGO -->
+        <footer class="footer">
             <a href="https://catb12345612-ai.github.io/Syed-Zeeshaan-Ali-High-Fledged-Engineering-And-Digital-Tech-Solutions-REVIEW/" target="_blank" class="dev-badge click-sfx">
-                <!-- Exact file name as requested -->
-                <img src="dev-logo.png(1).png" alt="Developer Logo" class="dev-logo-img" onerror="this.src='https://via.placeholder.com/150/000/d4af37?text=DEV'">
+                <img src="dev-logo.png (1)_4.jpg" alt="Developer Logo" class="dev-logo-img" onerror="this.src='https://via.placeholder.com/150/000/d4af37?text=DEV'">
                 <span class="dev-text">Engineered By</span>
                 <span class="dev-name">Syed Zeeshaan Ali</span>
             </a>
@@ -324,71 +279,36 @@
 
     </div>
 
-    <!-- MODAL FOR DUAL NUMBERS -->
+    <!-- MODAL -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal-content">
             <h3 class="modal-title" id="modalTitle">Select Option</h3>
-            <div id="modalButtons">
-                <!-- Buttons injected via JS -->
-            </div>
+            <div id="modalButtons"></div>
             <span class="close-modal click-sfx" onclick="closeModal()">Return</span>
         </div>
     </div>
 
     <!-- JAVASCRIPT ENGINE -->
     <script>
-        // 1. DYNAMIC BACKGROUND IMAGE CHANGER (HIGH-END TECH AESTHETIC, ULTRA COMPRESSED)
-        // Using premium, dark sleek technology images (q=20, w=600 for zero lag)
-        const bgImages = [
-            'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&q=20&w=600&fm=webp', // Dark sleek laptop/phone
-            'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&q=20&w=600&fm=webp', // Close up premium phone lens
-            'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&q=20&w=600&fm=webp', // iPhone box elegant
-            'https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=20&w=600&fm=webp', // Dark mode abstract tech
-            'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=20&w=600&fm=webp'  // Minimalist dark tech
-        ];
-        
-        let bgIndex = 0;
-        const bgSlider = document.getElementById('bg-slider');
-        
-        function changeBackground() {
-            bgSlider.style.backgroundImage = `url('${bgImages[bgIndex]}')`;
-            bgIndex = (bgIndex + 1) % bgImages.length;
-        }
-        changeBackground(); 
-        setInterval(changeBackground, 12000); 
-
-        // 2. SCROLL ANIMATION OBSERVER
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -20px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, observerOptions);
-        document.querySelectorAll('.fade-in-scroll').forEach(el => observer.observe(el));
-
-        // 3. SOUND EFFECTS (SFX) HANDLER
+        // 1. SOUND EFFECTS HANDLER
         const clickAudio = document.getElementById('sfx-click');
         const successAudio = document.getElementById('sfx-success');
-        
+
         document.querySelectorAll('.click-sfx').forEach(btn => {
             btn.addEventListener('click', () => {
                 clickAudio.currentTime = 0;
-                clickAudio.play().catch(e => console.log('Audio autoplay blocked by browser'));
+                clickAudio.play().catch(e => console.log('Audio blocked'));
             });
         });
 
-        // 4. MODAL LOGIC FOR HIDDEN NUMBERS
-        const numbers = {
-            num1: "9908768058",
-            num2: "8886222446"
-        };
+        // 2. MODAL LOGIC
+        const numbers = { num1: "9908768058", num2: "8886222446" };
         const modal = document.getElementById('contactModal');
         const modalTitle = document.getElementById('modalTitle');
         const modalButtons = document.getElementById('modalButtons');
 
         function openModal(type) {
             modalButtons.innerHTML = ''; 
-            
             if(type === 'call') {
                 modalTitle.innerHTML = '<i class="fa-solid fa-phone"></i> Contact Support';
                 modalButtons.innerHTML = `
@@ -396,26 +316,22 @@
                     <button onclick="window.location.href='tel:${numbers.num2}'" class="modal-btn click-sfx">Concierge Line 2</button>
                 `;
             } else if (type === 'wa') {
-                modalTitle.innerHTML = '<i class="fa-brands fa-whatsapp"></i> WhatsApp Concierge';
+                modalTitle.innerHTML = '<i class="fa-brands fa-whatsapp"></i> WhatsApp Support';
                 modalButtons.innerHTML = `
                     <button onclick="window.open('https://wa.me/91${numbers.num1}', '_blank')" class="modal-btn click-sfx">Chat Support 1</button>
                     <button onclick="window.open('https://wa.me/91${numbers.num2}', '_blank')" class="modal-btn click-sfx">Chat Support 2</button>
                 `;
             }
             
-            // Re-bind SFX to newly created elements
             document.querySelectorAll('.modal-btn').forEach(btn => {
                 btn.addEventListener('click', () => { clickAudio.currentTime = 0; clickAudio.play().catch(e=>{}); });
             });
-
             modal.classList.add('active');
         }
 
-        function closeModal() {
-            modal.classList.remove('active');
-        }
+        function closeModal() { modal.classList.remove('active'); }
 
-        // 5. PREMIUM AI REVIEW GENERATOR & SINGLE-CLICK AUTO-REDIRECT
+        // 3. PREMIUM AI REVIEW GENERATOR & REDIRECT
         const reviews = [
             "Bhanu Mobiles offers an exceptionally premium experience! They have every new flagship model available.",
             "Absolutely luxurious service! Bought my new smartphone here and the staff was super professional.",
@@ -426,60 +342,39 @@
             "Excellent customer hospitality. They explain the features of all mobiles very patiently.",
             "100% genuine products. If you are looking to buy an iPhone or flagship Android, this is the spot.",
             "Great exchange value for old phones! Very happy with my elegant purchase at Bhanu Mobiles.",
-            "The hospitality and technical knowledge of the staff here is world-class. 5 stars!",
-            "Got my phone display fixed in record time. 100% Original parts and transparent pricing.",
-            "Premium store ambience and premium service. Highly recommended in Khammam.",
-            "Trustworthy and highly reliable. I send all my friends and family to Bhanu Mobiles.",
-            "Excellent after-sales support. They actually care about the client even after the purchase.",
-            "Best boutique for Apple and premium Samsung products in Khammam city.",
-            "Super fast, elegant billing and very polite owner. 5-star luxury experience guaranteed.",
-            "I love how updated their stock is. Every latest global launch is instantly available here.",
-            "Very clean, hygienic, and aesthetic store. The staff maintains great professionalism.",
-            "Five stars for the incredible service and wide range of smart luxury gadgets available.",
-            "Bhanu Mobiles truly stands up to its name as Khammam's premier mobile destination!"
+            "The hospitality and technical knowledge of the staff here is world-class. 5 stars!"
         ];
 
         function generateAndRedirect() {
             const btn = document.getElementById('reviewBtnMain');
             
-            // 1. Play success SFX
             successAudio.currentTime = 0;
-            successAudio.play().catch(e => console.log('Audio blocked by browser'));
+            successAudio.play().catch(e => console.log('Audio blocked'));
 
-            // 2. Select random AI review
             const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
-            
-            // 3. Write to clipboard and trigger elegant auto-redirect VFX
+
             navigator.clipboard.writeText(randomReview).then(() => {
-                
-                // Visual Button Change (Premium Green Success)
                 const originalText = btn.innerHTML;
                 const originalBackground = btn.style.background;
-                const originalColor = btn.style.color;
                 
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied. Navigating...';
-                btn.style.background = '#1b4332'; // Deep luxury green
+                btn.style.background = '#1b4332'; 
                 btn.style.color = '#74c69d';
-                btn.style.boxShadow = '0 0 20px rgba(45, 106, 79, 0.6)';
-                btn.style.animation = 'none'; // Stop gradient animation
+                btn.style.border = '1px solid #74c69d';
                 
-                // 4. Delay redirect slightly so user sees the success state & hears the sound
                 setTimeout(() => {
                     window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
                     
-                    // Reset button back to normal after a couple of seconds
                     setTimeout(() => {
                         btn.innerHTML = originalText;
                         btn.style.background = originalBackground;
-                        btn.style.color = originalColor;
-                        btn.style.boxShadow = '';
-                        btn.style.animation = 'shimmerGold 4s ease infinite';
+                        btn.style.color = '#000';
+                        btn.style.border = 'none';
                     }, 2500);
-                }, 1300); // 1.3 seconds delay
+                }, 1300); 
 
             }).catch(err => {
                 console.error('Could not copy text: ', err);
-                // Fallback direct navigation
                 window.location.href = "https://search.google.com/local/reviews?placeid=ChIJO0_CawBZNDoRz-9mGrI3op0&q=Bhanu+mobiles&authuser=0&hl=en&gl=IN";
             });
         }
